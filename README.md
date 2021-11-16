@@ -142,4 +142,5 @@ The project has also been tested to build using Rider and Rider for Unreal Engin
 ## Inspiration
 
 This was heavily based on https://github.com/ReClassNET/ReClass.NET-MemoryPipePlugin
-Kudos to them for the inspiration.
+
+Kudos to them for their hard work.
