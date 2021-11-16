@@ -34,6 +34,64 @@ descriptors and find unusual named pipes open.
 There are more advanced ways to inject DLLs that would not come up in the processes module list, but it is beyond the
 scope of this project.
 
+## How do I use it
+
+```c#
+using System;
+using RemoteHands;
+
+// Inject the DLL if it's not already injected.
+var injected = Injector.Inject(pid, @"RemoteHands\x64\Release\mbam.dll");
+if (injected)
+{
+    Console.WriteLine("DLL injected");
+}
+else
+{
+    Console.WriteLine("DLL is already injected");
+}
+
+// Create a client for interacting with the remote DLL
+var client = Client.Create(pid);
+if (!client.IsValid())
+{
+    Console.WriteLine("Cannot connect to process");
+    return;
+}
+
+// Allocate the console, because why not
+client.AllocateConsole();
+
+// Allocate a buffer where we will read in the vtable pointer address.
+var addr = new byte[8];
+if (!client.ReadMemory(vTableAddress + 6 * IntPtr.Size, ref addr, 0, IntPtr.Size))
+{
+    Console.WriteLine("Cannot read vtable address");
+    return;
+}
+
+// Convert bytes to IntPtr
+var realFunctionAddr = new IntPtr(BitConverter.ToInt64(addr, 0));
+
+// Create a new function in the native process, with 3 arguments.
+// The name is only used for accounting purposes and has no meaning.
+// CreateFunction returns the address of the newly created function.
+var hookAddress = client.CreateFunction(
+    name: "fakeFunction", numArgs: 3, handler: arguments =>
+    {
+        Console.WriteLine($"Hook called with {arguments.Count}, forwarding to real function.");
+        // Forward the call to the real function after hooking, and return it's return value.
+        return client.CallFunction(realFunctionAddr, arguments.ToArray());
+    }
+);
+
+// Convert the function address to bytes.
+addr = BitConverter.GetBytes(hookAddress.ToInt64());
+
+// Overwrite the pointer in the vtable with the address of our hook
+client.WriteMemory(vTableAddress + 6 * IntPtr.Size, ref addr, 0, IntPtr.Size);
+```
+
 ## How does it work
 
 After injecting the C++ DLL, the DLL opens two named pipes.
@@ -79,7 +137,7 @@ might work too.
 Depending on your development environment, you might be able to build the project using a simple `dotnet build` if the
 SDKs are available.
 
-The project has also been tested to build using Rider and Rider for Unreal Engine.
+The project has also been tested to build using Rider and Rider for Unreal Engine (which has C++ support).
 
 ## Inspiration
 
