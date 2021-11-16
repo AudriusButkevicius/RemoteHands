@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="PipeStream">
+      <UniqueIdentifier>{52a8b6a9-d830-4c6c-843c-d72915493562}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PipeStream\BinaryReader.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\BinaryWriter.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\Convert.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\Exceptions.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\MemoryStream.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\NamedPipeServerStream.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\PipeStream.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\SafeHandle.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeStream\Stream.hpp">
+      <Filter>PipeStream</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PipeStream\BinaryReader.cpp">
+      <Filter>PipeStream</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeStream\BinaryWriter.cpp">
+      <Filter>PipeStream</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeStream\Convert.cpp">
+      <Filter>PipeStream</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeStream\MemoryStream.cpp">
+      <Filter>PipeStream</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeStream\NamedPipeServerStream.cpp">
+      <Filter>PipeStream</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeStream\PipeStream.cpp">
+      <Filter>PipeStream</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vcpkg.json" />
+  </ItemGroup>
+</Project>

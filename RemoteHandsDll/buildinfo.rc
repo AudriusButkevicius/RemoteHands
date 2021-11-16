@@ -1,0 +1,25 @@
+1 VERSIONINFO
+FILEVERSION 4,4,6,0
+PRODUCTVERSION 4,4,6,0
+FILEOS 0x4
+FILETYPE 0x1
+{
+    BLOCK "StringFileInfo"
+    {
+        BLOCK "040904E4"
+        {
+            VALUE "CompanyName",        "Malwarebytes Inc.\0"
+            VALUE "FileDescription",    "Malwarebytes Anti-Malware Scanner\0"
+            VALUE "FileVersion",        "4.4.6.0\0"
+            VALUE "LegalCopyright",     "2021 Malwarebytes Inc. All Rights Reserved\0"
+            VALUE "OriginalFilename",   "mbam.dll\0"
+            VALUE "ProductName",        "Malwarebytes Anti-Malware\0"
+            VALUE "ProductVersion",     "4.4.6.0\0"
+        }
+    }
+
+    BLOCK "VarFileInfo"
+    {
+        VALUE "Translation", 0x0409 0x04E4
+    }
+}
