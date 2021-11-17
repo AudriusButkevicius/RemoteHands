@@ -1,10 +1,10 @@
 #include <process.h>
-#include "PipeStream/NamedPipeServerStream.hpp"
-#include "MessageClient.hpp"
-#include "PipeStream/Exceptions.hpp"
-#include "RemoteFunctions.hpp"
+
 #include "Client.hpp"
-#include <thread>
+#include "MessageClient.hpp"
+#include "RemoteFunctions.hpp"
+#include "PipeStream/Exceptions.hpp"
+#include "PipeStream/NamedPipeServerStream.hpp"
 
 //---------------------------------------------------------------------------
 [[noreturn]] void CommandThread(void*)

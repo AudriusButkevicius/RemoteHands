@@ -1,8 +1,9 @@
 #pragma once
 
 #include <filesystem>
-#include "PipeStream/NamedPipeServerStream.hpp"
+
 #include "MessageClient.hpp"
+#include "PipeStream/NamedPipeServerStream.hpp"
 
 namespace fs = std::filesystem;
 
