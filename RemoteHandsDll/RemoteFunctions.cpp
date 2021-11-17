@@ -1,17 +1,20 @@
 #pragma once
 
-#include <string>
+#include "RemoteFunctions.hpp"
+
+#include <atomic>
+#include <iostream>
 #include <map>
+#include <mutex>
+#include <string>
 #include <utility>
 #include <vector>
-#include "MessageClient.hpp"
-#include "Client.hpp"
-#include "RemoteFunctions.hpp"
-#include <iostream>
-#include "PipeStream/NamedPipeServerStream.hpp"
-#include "PipeStream/Exceptions.hpp"
-#include <atomic>
 #include <boost/stacktrace.hpp>
+
+#include "Client.hpp"
+#include "MessageClient.hpp"
+#include "PipeStream/Exceptions.hpp"
+#include "PipeStream/NamedPipeServerStream.hpp"
 
 
 std::atomic<MessageClient*> messageClient;
@@ -158,7 +161,7 @@ bool FreeRemoteFunction(const std::string& name)
             pipe.WaitForConnection();
             std::cout << "Got a connection on function data thread" << std::endl;
             auto client = CreateClient(pipe);
-            messageClient.store(&client);
+            messageClient = &client;
             try
             {
                 while (pipe.IsConnected())
@@ -169,7 +172,7 @@ bool FreeRemoteFunction(const std::string& name)
             catch (...)
             {
             }
-            messageClient.store(nullptr);
+            messageClient = nullptr;
             std::cout << "Client on function data thread went away" << std::endl;
             pipe.Disconnect();
         }

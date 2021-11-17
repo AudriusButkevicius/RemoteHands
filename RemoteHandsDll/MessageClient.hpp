@@ -1,12 +1,11 @@
 #pragma once
 
-#include <unordered_map>
-#include <memory>
 #include <functional>
-#include <mutex>
+#include <memory>
+#include <unordered_map>
 
-#include "PipeStream/PipeStream.hpp"
 #include "Messages.hpp"
+#include "PipeStream/PipeStream.hpp"
 
 class MessageClient
 {

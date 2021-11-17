@@ -1,10 +1,12 @@
 #include "Messages.hpp"
-#include "MessageClient.hpp"
+
 #include <csignal>
-#include <stdexcept>
-#include <iostream>
 #include <ffi.h>
+#include <iostream>
+#include <stdexcept>
+
 #include "MemoryHelper.hpp"
+#include "MessageClient.hpp"
 #include "RemoteFunctions.hpp"
 
 void SignalHandler(int signal)

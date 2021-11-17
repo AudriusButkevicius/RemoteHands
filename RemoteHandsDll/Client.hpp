@@ -1,7 +1,7 @@
 #pragma once
 
-#include "PipeStream/NamedPipeServerStream.hpp"
 #include "MessageClient.hpp"
+#include "PipeStream/NamedPipeServerStream.hpp"
 
 std::string CreatePipeName(std::string prefix);
 

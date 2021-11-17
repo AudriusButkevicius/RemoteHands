@@ -1,7 +1,6 @@
 #include <windows.h>
 #include <vector>
 #include <cstdint>
-#include <algorithm>
 
 bool IsValidMemoryRange(LPCVOID address, int length);
 
